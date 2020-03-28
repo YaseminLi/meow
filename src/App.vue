@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       selectedLabelDefault: "Record",
       tabs: [
@@ -23,6 +23,11 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    changeRouter() {
+      console.log("a");
+    }
   }
 };
 </script>
