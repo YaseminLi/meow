@@ -15,18 +15,20 @@ export default {
       tabs: [
         {
           label: "Record",
-          icon: "cubeic-home"
+          icon: "cubeic-home",
+          value: "record"
         },
         {
           label: "Stock",
-          icon: "cubeic-like"
+          icon: "cubeic-like",
+          value: "stock"
         }
       ]
     };
   },
   methods: {
-    changeRouter() {
-      console.log("a");
+    changeRouter(value) {
+      this.$router.push(`/${value}`)
     }
   }
 };
