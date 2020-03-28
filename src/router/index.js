@@ -1,22 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
+// 模块懒加载
+const Record = () => import(/* webpackChunkName: "record" */ '../views/Record.vue')
+const Stock = () => import(/* webpackChunkName: "stock" */ '../views/Stock.vue')
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Record',
+    component: Record
   },
   {
-    path: '/about',
-    name: 'About',
+    path: '/stock',
+    name: 'Stock',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: Stock
   }
 ]
 
