@@ -1,14 +1,17 @@
 <template>
   <div class="record">
     <Introduce />
+    <Remind />
   </div>
 </template>
 
 <script>
 import Introduce from "components/Introduce";
+import Remind from "components/Remind";
 export default {
   components: {
-    Introduce
+    Introduce,
+    Remind
   }
 };
 </script>
