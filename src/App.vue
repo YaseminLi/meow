@@ -14,10 +14,13 @@ export default {
 };
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
+@import '~common/stylus/variable.styl'
 #app
   text-align: center
   color: #2c3e50
+  height 100%
+  background $background-grey
   .tabBar
     position: fixed
     bottom: 0

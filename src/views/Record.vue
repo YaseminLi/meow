@@ -1,7 +1,12 @@
 <template>
   <div class="record">
     <Introduce />
-    <Remind />
+    <div class="remindContainer">
+      <Remind />
+      <Remind />
+      <Remind />
+      <Remind />
+    </div>
   </div>
 </template>
 
@@ -17,6 +22,11 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .record
-  height 100%
-  background $background-grey
+  height: 100%
+  background: $background-grey
+  .remindContainer
+    display flex
+    flex-direction column
+    margin-top -10px
+    margin-bottom 50px
 </style>
