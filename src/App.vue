@@ -1,9 +1,7 @@
 <template>
   <div id="app">
-    <div id="nav">
       <router-view />
       <cube-tab-bar v-model="selectedLabelDefault" :data="tabs" @click="changeRouter"></cube-tab-bar>
-    </div>
   </div>
 </template>
 
