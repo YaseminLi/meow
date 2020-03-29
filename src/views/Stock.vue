@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    bbb
+  <div class="stock">
+    库存记录页面
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
   </div>
 </template>
@@ -10,7 +10,7 @@
 // import Record from '@/components/record.vue'
 
 export default {
-  name: 'Home'
+  name: 'Stock'
   // components: {
   //   Record
   // }

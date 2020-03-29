@@ -5,6 +5,9 @@ import router from './router'
 import store from './store'
 import 'amfe-flexible'
 
+// 引入全局基本样式
+import 'common/stylus/base.styl';
+
 Vue.config.productionTip = false
 
 new Vue({

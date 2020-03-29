@@ -1,5 +1,19 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="record">
+    <Introduce />
   </div>
 </template>
+
+<script>
+import Introduce from "components/Introduce";
+export default {
+  components: {
+    Introduce
+  }
+};
+</script>
+<style lang="stylus" scoped>
+.record
+  height 100%
+  background $background-grey
+</style>
