@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <TabBar class="tabBar" />
+    <TabBar class="tab" />
   </div>
 </template>
 
 <script>
-import TabBar from "./components/TabBar";
+import TabBar from "./components/Tab";
 export default {
   components: {
     TabBar
@@ -21,9 +21,10 @@ export default {
   color: #2c3e50
   height 100%
   background $background-grey
-  .tabBar
+  .tab
     position: fixed
     bottom: 0
     width: 100%
     height: 50px
+    z-index 999
 </style>
