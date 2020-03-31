@@ -59,8 +59,8 @@ export const datePickerMixin = {
             if (!this.datePicker) {
                 this.datePicker = this.$createDatePicker({
                     title: title,
-                    min: new Date(2008, 7, 8),
-                    max: new Date(2020, 9, 20),
+                    min: new Date(),
+                    max: new Date(2025, 9, 20),
                     value: new Date(),
                     onSelect: this.selectHandle,
                     onCancel: this.cancelHandle
@@ -69,19 +69,54 @@ export const datePickerMixin = {
 
             this.datePicker.show()
         },
-        selectHandle(date, selectedVal, selectedText) {
-            this.$createDialog({
-                type: 'warn',
-                content: `Selected Item: <br/> - date: ${date} <br/> - value: ${selectedVal.join(', ')} <br/> - text: ${selectedText.join(' ')}`,
-                icon: 'cubeic-alert'
-            }).show()
+        // selectHandle(date, selectedVal, selectedText) {
+        //     this.$createDialog({
+        //         type: 'warn',
+        //         content: `Selected Item: <br/> - date: ${date} <br/> - value: ${selectedVal.join(', ')} <br/> - text: ${selectedText.join(' ')}`,
+        //         icon: 'cubeic-alert'
+        //     }).show()
+        // },
+        // cancelHandle() {
+        //     this.$createToast({
+        //         type: 'correct',
+        //         txt: 'Picker canceled',
+        //         time: 1000
+        //     }).show()
+        // }
+    }
+}
+
+// 时间选择
+export const timePickerMixin = {
+    methods: {
+        showTimePicker(title) {
+            if (!this.timePicker) {
+                this.timePicker = this.$createDatePicker({
+                    title: title,
+                    min: [0, 0, 0],
+                    max: [23, 59, 59],
+                    value: new Date(),
+                    startColumn: 'hour',
+                    onSelect: this.selectHandle,
+                    onCancel: this.cancelHandle
+                })
+            }
+
+            this.timePicker.show()
         },
-        cancelHandle() {
-            this.$createToast({
-                type: 'correct',
-                txt: 'Picker canceled',
-                time: 1000
-            }).show()
-        }
+        // selectHandle(date, selectedVal, selectedText) {
+        //     this.$createDialog({
+        //         type: 'warn',
+        //         content: `Selected Item: <br/> - date: ${date} <br/> - value: ${selectedVal.join(', ')} <br/> - text: ${selectedText.join(' ')}`,
+        //         icon: 'cubeic-alert'
+        //     }).show()
+        // },
+        // cancelHandle() {
+        //     this.$createToast({
+        //         type: 'correct',
+        //         txt: 'Picker canceled',
+        //         time: 1000
+        //     }).show()
+        // }
     }
 }

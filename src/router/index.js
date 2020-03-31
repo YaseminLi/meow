@@ -7,6 +7,8 @@ const Stock = () => import(/* webpackChunkName: "stock" */ '../views/Stock.vue')
 const EditMessage = () => import(/* webpackChunkName: "editMessage" */ '../views/EditMessage.vue')
 const EditEvent = () => import(/* webpackChunkName: "editEvent" */ '../views/EditEvent.vue')
 const EditStock = () => import(/* webpackChunkName: "editStock" */ '../views/EditStock.vue')
+const SetRate = () => import(/* webpackChunkName: "setRate" */ '../views/SetRate.vue')
+const CustomizeRate = () => import(/* webpackChunkName: "customizeRate" */ '../views/CustomizeRate.vue')
 Vue.use(VueRouter)
 const routes = [
   {
@@ -20,7 +22,17 @@ const routes = [
     },
     {
       path: 'editEvent',
-      component: EditEvent
+      component: EditEvent,
+      name: "editEvent",
+      children: [{
+        path: 'setRate',
+        component: SetRate,
+        children: [{
+          path: 'customizeRate',
+          component: CustomizeRate,
+          name: "customizeRate"
+        }]
+      }]
     }
     ]
   },

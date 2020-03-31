@@ -12,7 +12,7 @@
       <ul>
         <li class="item">
           <div class="tag space" >宠物性别</div>
-          <cube-radio-group v-model="genderSelected" :options="genderOptions" />
+          <cube-radio-group v-model="genderSelected" :options="genderOptions" :horizontal="true"/>
           <!-- <span @click="showPicker(genderPickerData,genderPickerTitle)">
             <span>MM</span>
             <i class="iconfont next" ></i>
@@ -70,7 +70,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div> 
 </template>
 <script>
 import Title from "components/Title.vue";
@@ -145,7 +145,6 @@ export default {
 </style>
 <style lang="stylus">
 .cube-radio-group
-        display flex
         border-style none
         >>>.cube-radio-wrap
           padding 0
