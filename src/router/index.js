@@ -9,6 +9,7 @@ const EditEvent = () => import(/* webpackChunkName: "editEvent" */ '../views/Edi
 const EditStock = () => import(/* webpackChunkName: "editStock" */ '../views/EditStock.vue')
 const SetRate = () => import(/* webpackChunkName: "setRate" */ '../views/SetRate.vue')
 const CustomizeRate = () => import(/* webpackChunkName: "customizeRate" */ '../views/CustomizeRate.vue')
+const SetRemindType = () => import(/* webpackChunkName: "setRemindType" */ '../views/SetRemindType.vue')
 Vue.use(VueRouter)
 const routes = [
   {
@@ -32,6 +33,9 @@ const routes = [
           component: CustomizeRate,
           name: "customizeRate"
         }]
+      }, {
+        path: 'setRemindType',
+        component: SetRemindType
       }]
     }
     ]

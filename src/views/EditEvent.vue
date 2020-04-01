@@ -5,7 +5,7 @@
       <ul>
         <li class="item">
           <div class="tag">提醒类型</div>
-          <span>
+          <span @click="setRemindType">
             <span>驱虫</span>
             <i class="iconfont next"></i>
           </span>
@@ -64,10 +64,13 @@ export default {
   },
   methods: {
     back() {
-      this.$router.back();
+      this.$router.push('/record');
     },
     setRate(){
       this.$router.push('/record/editEvent/setRate')
+    },
+    setRemindType(){
+      this.$router.push('/record/editEvent/setRemindType')
     }
   },
   mixins: [timePickerMixin, datePickerMixin, propmtMixin]
@@ -76,7 +79,7 @@ export default {
 <style lang="stylus" scoped>
 @import '~common/stylus/variable.styl'
 .editEvent
-  background: white
+  background: $color-white
   position: fixed
   top: 0
   width: 100%

@@ -1,11 +1,11 @@
 <template>
-  <div class="editEvent">
-    <Title @back="back" :title="title"/>
+  <div class="editStock">
+    <Title @back="back" :title="title" />
     <div class="content">
       <ul>
         <li class="item">
           <div class="tag space">类型</div>
-          <span>
+          <span @click="showPicker(typePickerDate,typePickerTitle)">
             <span>主粮</span>
             <i class="iconfont next"></i>
           </span>
@@ -38,7 +38,7 @@
             <i class="iconfont next"></i>
           </span>
         </li>
-          <li class="item">
+        <li class="item">
           <div class="tag">有效日期</div>
           <span>
             <span>2021-09-29</span>
@@ -72,12 +72,19 @@
 </template>
 <script>
 import Title from "components/Title.vue";
+import {
+  timePickerMixin,
+  datePickerMixin,
+  propmtMixin,pickerMixin
+} from "common/js/mixin.js";
 export default {
-    data(){
-        return{
-            title:"编辑库存"
-        }
-    },
+  data() {
+    return {
+      title: "编辑库存",
+      typePickerDate:[{text:"主粮",value:"主粮"}],
+      typePickerTitle:"选择类型",
+    };
+  },
   components: {
     Title
   },
@@ -85,12 +92,13 @@ export default {
     back() {
       this.$router.back();
     }
-  }
+  },
+  mixins: [timePickerMixin, datePickerMixin, propmtMixin,pickerMixin]
 };
 </script>
 <style lang="stylus" scoped>
 @import '~common/stylus/variable.styl'
-.editEvent
+.editStock
   background: white
   position: fixed
   top: 0
@@ -103,12 +111,12 @@ export default {
       font-size: $fontsize-small
       padding-left: 10px
     .space
-        text-align-last: justify;
-        width 56px
+      text-align-last: justify
+      width: 56px
     .item
       padding: 12px 20px
       display: flex
       justify-content: space-between
       align-items: center
       border-bottom: 1px $border-grey solid
-  </style>
+</style>
