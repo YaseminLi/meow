@@ -10,6 +10,7 @@ const EditStock = () => import(/* webpackChunkName: "editStock" */ '../views/Edi
 const SetRate = () => import(/* webpackChunkName: "setRate" */ '../views/SetRate.vue')
 const CustomizeRate = () => import(/* webpackChunkName: "customizeRate" */ '../views/CustomizeRate.vue')
 const SetRemindType = () => import(/* webpackChunkName: "setRemindType" */ '../views/SetRemindType.vue')
+const CustomizeRemindType = () => import(/* webpackChunkName: "customizeRemindType" */ '../views/CustomizeRemindType.vue')
 Vue.use(VueRouter)
 const routes = [
   {
@@ -35,7 +36,12 @@ const routes = [
         }]
       }, {
         path: 'setRemindType',
-        component: SetRemindType
+        component: SetRemindType,
+        children: [{
+          path: "customizeRemindType",
+          name: "customizeRemindType",
+          component: CustomizeRemindType
+        }]
       }]
     }
     ]

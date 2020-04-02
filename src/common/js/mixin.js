@@ -59,7 +59,7 @@ export const datePickerMixin = {
             if (!this.datePicker) {
                 this.datePicker = this.$createDatePicker({
                     title: title,
-                    min: new Date(),
+                    min: new Date(2000,1,1),
                     max: new Date(2025, 9, 20),
                     value: new Date(),
                     onSelect: this.selectHandle,

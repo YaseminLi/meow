@@ -1,5 +1,5 @@
 <template>
-  <div class="editStock">
+  <div class="editStock position-fixed">
     <Title @back="back" :title="title" />
     <div class="content">
       <ul>
@@ -98,14 +98,9 @@ export default {
 </script>
 <style lang="stylus" scoped>
 @import '~common/stylus/variable.styl'
+@import "~common/stylus/mixin.styl"
 .editStock
-  background: white
-  position: fixed
-  top: 0
-  width: 100%
-  bottom: 0
-  overflow: hidden
-  z-index: 20
+  position-fixed(20)
   .content
     .iconfont
       font-size: $fontsize-small

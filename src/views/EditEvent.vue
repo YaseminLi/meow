@@ -1,5 +1,5 @@
 <template>
-  <div class="editEvent">
+  <div class="editEvent position-fixed">
     <Title @back="back" :title="title" />
     <div class="content">
       <ul>
@@ -78,14 +78,9 @@ export default {
 </script>
 <style lang="stylus" scoped>
 @import '~common/stylus/variable.styl'
+@import "~common/stylus/mixin.styl"
 .editEvent
-  background: $color-white
-  position: fixed
-  top: 0
-  width: 100%
-  bottom: 0
-  overflow: hidden
-  z-index: 20
+  position-fixed(20)
   .content
     .iconfont
       font-size: $fontsize-small

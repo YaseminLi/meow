@@ -1,22 +1,37 @@
 <template>
-  <div class="editMessage">
+  <div class="editMessage position-fixed">
     <Title @back="back" :title="title" />
     <div class="content">
       <div class="avatar item">
         <div class="tag space">头像</div>
         <div class="right">
-          <img src="../common/img/avatar.png" />
-          <i class="iconfont next"></i>
+          <!-- <img src="../common/img/avatar.png" /> -->
+          <cube-upload
+            ref="upload"
+            v-model="files"
+            :action="action"
+            @files-added="addedHandler"
+            @file-error="errHandler"
+          >
+            <div class="clear-fix">
+              <cube-upload-file v-for="(file, i) in files" :file="file" :key="i"></cube-upload-file>
+              <cube-upload-btn :multiple="false">
+                <div>
+                  <i>＋</i>
+                </div>
+              </cube-upload-btn>
+            </div>
+          </cube-upload>
         </div>
       </div>
       <ul>
         <li class="item">
-          <div class="tag space" >宠物性别</div>
-          <cube-radio-group v-model="genderSelected" :options="genderOptions" :horizontal="true"/>
+          <div class="tag space">宠物性别</div>
+          <cube-radio-group v-model="genderSelected" :options="genderOptions" :horizontal="true" :hollow-style="true" />
           <!-- <span @click="showPicker(genderPickerData,genderPickerTitle)">
             <span>MM</span>
             <i class="iconfont next" ></i>
-          </span> -->
+          </span>-->
         </li>
         <li class="item">
           <div class="tag">宠物名字</div>
@@ -70,29 +85,31 @@
         </li>
       </ul>
     </div>
-  </div> 
+  </div>
 </template>
 <script>
 import Title from "components/Title.vue";
-import { pickerMixin ,propmtMixin,datePickerMixin} from "common/js/mixin.js";
+import { pickerMixin, propmtMixin, datePickerMixin } from "common/js/mixin.js";
 export default {
   data() {
     return {
       title: "宠物信息",
-      genderOptions: ["MM","GG"],
-      genderSelected:"MM",
-      namePropmtTitle:"宠物名字",
-      weightPropmtTitle:"宠物体重",
+      genderOptions: ["MM", "GG"],
+      genderSelected: "MM",
+      namePropmtTitle: "宠物名字",
+      weightPropmtTitle: "宠物体重",
       bornPickerData: [
         { text: "已绝育", value: "已绝育" },
         { text: "暂未绝育", value: "暂未绝育" },
         { text: "计划繁育", value: "计划繁育" }
       ],
-       bornPickerTitle:"是否绝育",
-       birthDatePickerTitle:"出生日期",
-       homeDatePickerTitle:"出生日期",
-       kindPropmtTitle:"品种",
-       leixingPromtTitle:"宠物类型"
+      bornPickerTitle: "是否绝育",
+      birthDatePickerTitle: "出生日期",
+      homeDatePickerTitle: "出生日期",
+      kindPropmtTitle: "品种",
+      leixingPromtTitle: "宠物类型",
+      action: "//jsonplaceholder.typicode.com/photos/",
+      files: []
     };
   },
   components: {
@@ -101,21 +118,28 @@ export default {
   methods: {
     back() {
       this.$router.back();
+    },
+    addedHandler() {
+      const file = this.files[0]
+      file && this.$refs.upload.removeFile(file)
+    },
+    errHandler() {
+      // const msg = file.response.message
+      this.$createToast({
+        type: 'warn',
+        txt: 'Upload fail',
+        time: 1000
+      }).show()
     }
   },
-  mixins: [pickerMixin,propmtMixin,datePickerMixin]
+  mixins: [pickerMixin, propmtMixin, datePickerMixin]
 };
 </script>
 <style lang="stylus" scoped>
 @import '~common/stylus/variable.styl'
+@import '~common/stylus/mixin.styl'
 .editMessage
-  background: white
-  position: fixed
-  top: 0
-  width: 100%
-  bottom: 0
-  overflow: hidden
-  z-index: 20
+  position-fixed(20)
   .content
     .iconfont
       font-size: $fontsize-small
@@ -130,23 +154,46 @@ export default {
       align-items: center
       border-bottom: 1px $border-grey solid
     .avatar
-      .right
-        display: flex
-        align-items: center
-        img
+      .cube-upload
+        width 60px
+        height 60px
+        border-radius 50%
+        .cube-upload-file, .cube-upload-btn
+          margin: 0
           height: 60px
-          width: 60px
-          border-radius: 50%
+        .cube-upload-file
+          margin: 0
+          + .cube-upload-btn
+            margin-top: -60px
+            opacity: 0
+          >>>.cube-upload-file-def
+            width: 60px
+            height: 60px
+            border-radius 50%
+            >>>.cubeic-wrong
+              display: none
+            .cube-upload-file-state
+              border-radius 50%
+        .cube-upload-btn
+          display: flex
+          align-items: center
+          justify-content: center
+          i
+            display: inline-flex
+            align-items: center
+            justify-content: center
+            width: 40px
+            height: 40px
+            font-size: 32px
+            line-height: 1
+            font-style: normal
+            color: $color-yellow
+            background-color: $background-grey
+            border-radius: 50%
     .cube-radio-group
-        display flex
-        >>>.cube-radio-wrap
-          padding 0
-          border-style none!important
-</style>
-<style lang="stylus">
-.cube-radio-group
-        border-style none
-        >>>.cube-radio-wrap
-          padding 0
-          // border-bottom 1px transparent solid!important
+      width 100px
+      >>>.cube-radio
+        padding 0
+      >>>.cube-radio-wrap
+        padding 0
 </style>
