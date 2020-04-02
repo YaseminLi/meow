@@ -2,14 +2,16 @@
   <div class="introduce">
     <div class="top">
       <img class="avatar" src="../common/img/avatar.png" />
-      <div class="message">
-        <div class="nameMale">
-          <span class="name">汤圆</span>
-          <i class="iconfont female"></i>
+      <div class="message-container">
+        <div class="message">
+          <div class="nameMale">
+            <span class="name">汤圆</span>
+            <i class="iconfont female"></i>
+          </div>
+          <div class="kind">英短银渐</div>
         </div>
-        <div class="kind">英短银渐</div>
+        <i class="iconfont next" @click="editMessage()"></i>
       </div>
-      <i class="iconfont next" @click="editMessage()"></i>
     </div>
     <div class="bottom">
       <div class="weight item">
@@ -32,7 +34,7 @@ export default {
   methods: {
     editMessage() {
       // 向父组件传递点击事件
-      this.$emit('editMessage')
+      this.$emit("editMessage");
     }
   }
 };
@@ -48,33 +50,44 @@ export default {
   .top
     display: flex
     height: 100px
-    position: relative
     .avatar
       width: 90px
       height: 90px
       border-radius: 50%
       margin-right: 20px
-    .message
-      display: flex
-      flex-direction: column
-      justify-content: space-around
-      padding: 15px 0
-      .nameMale
+    .message-container
+      display flex
+      flex 1
+      margin-right 30px
+      justify-content space-between
+      align-items center
+      .message
+        height 100%
         display: flex
-        align-items: center
-        .name
-          font-size: $fontsize-large-xxxx
-        .iconfont
-          font-size: $fontsize-large
-          margin-left: 10px
-      .kind
-        font-size: $fontsize-medium
-        text-align: left
-    .next
-      position: absolute
-      right: 30px
-      top: 50%
-      margin-top: -8px // 相对于父组件上下居中
+        flex-direction: column
+        justify-content: center
+        padding: 15px 0
+        .nameMale
+          display: flex
+          align-items: center
+          margin-bottom 10px
+          .name
+            font-size: $fontsize-large-xxxx
+          .iconfont
+            font-size: $fontsize-large
+            margin-left: 10px
+        .kind
+          font-size: $fontsize-medium
+          text-align: left
+      .next
+        position: relative
+        &:before
+            content: ''
+            position: absolute
+            top: -10px
+            left: -10px
+            right: -10px
+            bottom: -10px
   .bottom
     display: flex
     justify-content: space-around
