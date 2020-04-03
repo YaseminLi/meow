@@ -2,7 +2,7 @@
   <div class="editMessage position-fixed">
     <Title @back="back" :title="title" />
     <div class="content">
-      <div class="avatar item">
+      <div class="avatar item border-bottom-1px">
         <div class="tag space">头像</div>
         <div class="right">
           <!-- <img src="../common/img/avatar.png" /> -->
@@ -25,29 +25,29 @@
         </div>
       </div>
       <ul>
-        <li class="item">
+        <li class="item border-bottom-1px">
           <div class="tag space">宠物性别</div>
-          <cube-radio-group v-model="genderSelected" :options="genderOptions" :horizontal="true" :hollow-style="true" />
-          <!-- <span @click="showPicker(genderPickerData,genderPickerTitle)">
+          <!-- <cube-radio-group v-model="genderSelected" :options="genderOptions" :horizontal="true" :hollow-style="true" /> -->
+          <span @click="showPicker(genderPickerData,genderPickerTitle)">
             <span>MM</span>
             <i class="iconfont next" ></i>
-          </span>-->
+          </span>
         </li>
-        <li class="item">
+        <li class="item border-bottom-1px">
           <div class="tag">宠物名字</div>
           <span @click="showPrompt(namePropmtTitle)">
             <span>猪猪</span>
             <i class="iconfont next"></i>
           </span>
         </li>
-        <li class="item">
+        <li class="item border-bottom-1px">
           <div class="tag">宠物类型</div>
           <span @click="showPrompt(leixingPromtTitle)">
             <span>猫咪</span>
             <i class="iconfont next"></i>
           </span>
         </li>
-        <li class="item">
+        <li class="item border-bottom-1px">
           <div class="tag space">品种</div>
           <span @click="showPrompt(kindPropmtTitle)">
             <span>银渐</span>
@@ -55,28 +55,28 @@
           </span>
         </li>
 
-        <li class="item">
+        <li class="item border-bottom-1px">
           <div class="tag">出生日期</div>
           <span @click="showDatePicker(birthDatePickerTitle)">
             <span>2019-06-18</span>
             <i class="iconfont next"></i>
           </span>
         </li>
-        <li class="item">
+        <li class="item border-bottom-1px">
           <div class="tag">到家日期</div>
           <span @click="showDatePicker(homeDatePickerTitle)">
             <span>2019-10-18</span>
             <i class="iconfont next"></i>
           </span>
         </li>
-        <li class="item">
+        <li class="item border-bottom-1px">
           <div class="tag space">宠物体重</div>
           <span @click="showPrompt(weightPropmtTitle)">
             <span>2.7kg</span>
             <i class="iconfont next"></i>
           </span>
         </li>
-        <li class="item">
+        <li class="item border-bottom-1px">
           <div class="tag">是否绝育</div>
           <span @click="showPicker(bornPickerData,bornPickerTitle)">
             <span>计划绝育</span>
@@ -94,8 +94,8 @@ export default {
   data() {
     return {
       title: "宠物信息",
-      genderOptions: ["MM", "GG"],
-      genderSelected: "MM",
+      genderPickerTitle:"宠物性别",
+      genderPickerData:[{ text: "MM", value: "MM" },{ text: "GG", value: "GG" }],
       namePropmtTitle: "宠物名字",
       weightPropmtTitle: "宠物体重",
       bornPickerData: [
@@ -148,11 +148,12 @@ export default {
       text-align-last: justify
       width: 56px
     .item
-      padding: 12px 20px
+      padding: 14px 0
+      margin 0 20px
       display: flex
       justify-content: space-between
       align-items: center
-      border-bottom: 1px $border-grey solid
+      border-bottom-1px($border-grey)
     .avatar
       .cube-upload
         width 60px

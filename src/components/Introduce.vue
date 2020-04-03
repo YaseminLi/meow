@@ -10,7 +10,7 @@
           </div>
           <div class="kind">英短银渐</div>
         </div>
-        <i class="iconfont next" @click="editMessage()"></i>
+        <span class="toEdit" @click="editMessage()"><i class="iconfont next" ></i></span>
       </div>
     </div>
     <div class="bottom">
@@ -33,6 +33,8 @@
 export default {
   methods: {
     editMessage() {
+      console.log('aa');
+      
       // 向父组件传递点击事件
       this.$emit("editMessage");
     }
@@ -79,15 +81,15 @@ export default {
         .kind
           font-size: $fontsize-medium
           text-align: left
-      .next
+      .toEdit
         position: relative
         &:before
-            content: ''
-            position: absolute
-            top: -10px
-            left: -10px
-            right: -10px
-            bottom: -10px
+          content: ''
+          position: absolute
+          top: -20px
+          left: -20px
+          right: -20px
+          bottom: -20px
   .bottom
     display: flex
     justify-content: space-around

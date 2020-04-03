@@ -1,6 +1,6 @@
 <template>
   <!-- 提醒事件组件 -->
-  <div class="remind">
+  <div class="remind"  @click="editEvent">
     <div class="icon">
       <i class="iconfont quchong"></i>
       <span>驱虫</span>
@@ -18,7 +18,7 @@
         <div class="rate">14天一次</div>
       </div>
     </div>
-    <i class="iconfont next" @click="editEvent"></i>
+    <i class="iconfont next"></i>
   </div>
 </template>
 <script>
@@ -37,7 +37,7 @@ export default {
   background: $color-white
   margin: 0 auto 16px auto
   border-radius: 5px
-  padding: 20px
+  padding: 10px 20px
   display: flex
   box-sizing: border-box
   position: relative

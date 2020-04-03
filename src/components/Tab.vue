@@ -6,7 +6,8 @@
 export default {
   data() {
     return {
-      selectedLabelDefault: "记录",
+      // 选中的是value的值，不是label= =
+      selectedLabelDefault: "record",
       tabs: [
         {
           label: "记录",

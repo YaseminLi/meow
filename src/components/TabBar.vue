@@ -1,6 +1,6 @@
 <template>
   <div class="tabBar">
-    <cube-tab-bar v-model="selectedLabelDefault" :data="tabs"></cube-tab-bar>
+    <cube-tab-bar v-model="selectedLabelDefault" :data="tabs" border-bottom-1px border-top-1px></cube-tab-bar>
     <cube-tab-panels v-model="selectedLabelDefault">
       <cube-tab-panel v-for="(item) in tabs" :label="item.label" :key="item.label" class="scroll-list-wrap">
           <cube-scroll>
@@ -55,11 +55,12 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~common/stylus/variable.styl'
+@import '~common/stylus/mixin.styl'
 .cube-tab-bar
   height 38px
   background $color-yellow
-  border-bottom 1px $border-grey solid
-  border-top 1px $border-grey solid
+  border-bottom-1px($border-grey)
+  border-top-1px($border-grey)
   >>>.cube-tab_active
     color $color-black
     background $color-white
@@ -67,7 +68,11 @@ export default {
    padding 0
    height 100%
    line-height 38px
-.cube-tab-panel
-  height 535px
-//   margin-bottom 50px
+.cube-tab-panels
+  background $color-white
+  .cube-tab-panel
+    height 535px
+  .goods
+    padding 12px 0
+    margin 0 20px
 </style>
