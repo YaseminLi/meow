@@ -69,13 +69,13 @@ export const datePickerMixin = {
 
             this.datePicker.show()
         },
-        // selectHandle(date, selectedVal, selectedText) {
-        //     this.$createDialog({
-        //         type: 'warn',
-        //         content: `Selected Item: <br/> - date: ${date} <br/> - value: ${selectedVal.join(', ')} <br/> - text: ${selectedText.join(' ')}`,
-        //         icon: 'cubeic-alert'
-        //     }).show()
-        // },
+        selectHandle(date) {
+            this.$createDialog({
+                type: 'warn',
+                content: `Selected Item: <br/> - date: ${date} <br/> - <br/> `,
+                icon: 'cubeic-alert'
+            }).show()
+        },
         // cancelHandle() {
         //     this.$createToast({
         //         type: 'correct',

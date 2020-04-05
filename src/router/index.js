@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 // 模块懒加载
 const Record = () => import(/* webpackChunkName: "record" */ '../views/Record.vue')
 const Stock = () => import(/* webpackChunkName: "stock" */ '../views/Stock.vue')
-const EditMessage = () => import(/* webpackChunkName: "editMessage" */ '../views/EditMessage.vue')
+const EditIntroduce = () => import(/* webpackChunkName: "editIntroduce" */ '../views/EditIntroduce.vue')
 const EditEvent = () => import(/* webpackChunkName: "editEvent" */ '../views/EditEvent.vue')
 const EditStock = () => import(/* webpackChunkName: "editStock" */ '../views/EditStock.vue')
 const SetRate = () => import(/* webpackChunkName: "setRate" */ '../views/SetRate.vue')
@@ -19,8 +19,8 @@ const routes = [
     name: 'record',
     component: Record,
     children: [{
-      path: 'editMessage',
-      component: EditMessage
+      path: 'editIntroduce',
+      component: EditIntroduce
     },
     {
       path: 'editEvent',

@@ -1,29 +1,31 @@
 <template>
   <div class="introduce">
     <div class="top">
-      <img class="avatar" src="../common/img/avatar.png" />
+      <img class="avatar" :src="introduce.avatar" />
       <div class="message-container">
         <div class="message">
           <div class="nameMale">
-            <span class="name">汤圆</span>
-            <i class="iconfont female"></i>
+            <span class="name">{{introduce.name}}</span>
+            <i :class="'iconfont '+introduce.gender"></i>
           </div>
-          <div class="kind">英短银渐</div>
+          <div class="kind">{{introduce.kind}}</div>
         </div>
-        <span class="toEdit" @click="editMessage()"><i class="iconfont next" ></i></span>
+        <span class="toEdit" @click="editMessage()">
+          <i class="iconfont next"></i>
+        </span>
       </div>
     </div>
     <div class="bottom">
       <div class="weight item">
-        <span>2kg</span>
+        <span>{{introduce.weight}}</span>
         <span>体重</span>
       </div>
       <div class="together item">
-        <span>289天</span>
+        <span>{{introduce.together}}</span>
         <span>一起生活</span>
       </div>
       <div class="birth item">
-        <span>9个月</span>
+        <span>{{introduce.birth}}</span>
         <span>诞生</span>
       </div>
     </div>
@@ -31,10 +33,11 @@
 </template>
 <script>
 export default {
+  props: {
+    introduce: Object
+  },
   methods: {
     editMessage() {
-      console.log('aa');
-      
       // 向父组件传递点击事件
       this.$emit("editMessage");
     }
@@ -58,13 +61,13 @@ export default {
       border-radius: 50%
       margin-right: 20px
     .message-container
-      display flex
-      flex 1
-      margin-right 30px
-      justify-content space-between
-      align-items center
+      display: flex
+      flex: 1
+      margin-right: 30px
+      justify-content: space-between
+      align-items: center
       .message
-        height 100%
+        height: 100%
         display: flex
         flex-direction: column
         justify-content: center
@@ -72,7 +75,7 @@ export default {
         .nameMale
           display: flex
           align-items: center
-          margin-bottom 10px
+          margin-bottom: 10px
           .name
             font-size: $fontsize-large-xxxx
           .iconfont

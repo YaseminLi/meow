@@ -1,5 +1,5 @@
 <template>
-  <cube-tab-bar v-model="selectedLabelDefault" :data="tabs" @click="changeRouter"></cube-tab-bar>
+  <cube-tab-bar v-model="selectedLabelDefault" :data="tabs" @click="changeRouter" border-top-1px></cube-tab-bar>
 </template>
 
 <script>
@@ -32,9 +32,11 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~common/stylus/variable.styl'
+@import '~common/stylus/mixin.styl'
   .cube-tab-bar
     font-size 14px
     background  $color-white
+    border-top-1px($border-grey)
     >>>.cube-tab div
       margin-top 4px
 </style>

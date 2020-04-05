@@ -48,7 +48,7 @@
 
         <li class="item border-bottom-1px">
           <div class="tag">有效日期</div>
-          <span @click="showDatePicker(youxiaoDateTitle)">
+          <span @click="showDatePicker(valiableDateTitle)">
             <span>2021-09-29</span>
             <i class="iconfont next"></i>
           </span>
@@ -83,7 +83,7 @@ export default {
       fenliangTitle: "请输入份量",
       buyDateTitle: "选择购买日期",
       buyWhereTitle: "请输入购买途径",
-      youxiaoDateTitle: "选择有效日期",
+      valiableDateTitle: "选择有效日期",
       countTitle: "请输入数量",
       booking:false,
       open:true

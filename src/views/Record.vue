@@ -2,9 +2,9 @@
   <div class="record scroll-list-wrap">
     <!-- 滚动列表 -->
     <cube-scroll>
-      <Introduce @editMessage='editMessage'/>
+      <Introduce @editMessage="editMessage" :introduce="introduce"/>
       <div class="remindContainer">
-        <Remind @editEvent="editEvent"/>
+        <Remind @editEvent="editEvent" />
         <Remind />
         <Remind />
         <Remind />
@@ -17,17 +17,26 @@
 <script>
 import Introduce from "components/Introduce";
 import Remind from "components/Remind";
+import { introduce } from "common/data/introduce.js";
 export default {
+  data() {
+    return {
+      introduce: ""
+    };
+  },
   components: {
     Introduce,
     Remind
   },
-  methods:{
-    editMessage(){
-      this.$router.push('/record/editMessage')
+  created() {
+    this.introduce = introduce;
+  },
+  methods: {
+    editMessage() {
+      this.$router.push("/record/editIntroduce");
     },
-    editEvent(){
-      this.$router.push('/record/editEvent')
+    editEvent() {
+      this.$router.push("/record/editEvent");
     }
   }
 };
