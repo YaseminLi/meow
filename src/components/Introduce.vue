@@ -1,16 +1,18 @@
 <template>
   <div class="introduce">
     <div class="top">
-      <img class="avatar" :src="introduce.avatar" />
+      <!-- <img class="avatar" :src="introduce.avatar" /> -->
+      <img class="avatar" src="../common/img/avatar.png" />
       <div class="message-container">
         <div class="message">
           <div class="nameMale">
-            <span class="name">{{introduce.name}}</span>
-            <i :class="'iconfont '+introduce.gender"></i>
+            <!-- <span class="name">{{introduce.name}}</span> -->
+            <span class="name" >{{sharedState.introduce.name}}</span>
+            <i :class="'iconfont '+introduce.gender" @click="changeName"></i>
           </div>
           <div class="kind">{{introduce.kind}}</div>
         </div>
-        <span class="toEdit" @click="editMessage()">
+        <span class="toEdit" @click="editIntroduce()">
           <i class="iconfont next"></i>
         </span>
       </div>
@@ -21,25 +23,52 @@
         <span>体重</span>
       </div>
       <div class="together item">
-        <span>{{introduce.together}}</span>
+        <span>{{together}}天</span>
         <span>一起生活</span>
       </div>
       <div class="birth item">
-        <span>{{introduce.birth}}</span>
+        <span>{{birth}}个月</span>
         <span>诞生</span>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { store } from "../store.js";
+console.log(store);
+
 export default {
   props: {
     introduce: Object
   },
+  data() {
+    return {
+      sharedState: store.state
+    };
+  },
   methods: {
-    editMessage() {
+    editIntroduce() {
       // 向父组件传递点击事件
-      this.$emit("editMessage");
+      this.$emit("editIntroduce");
+    },
+    changeName(){
+      store.setMessageAction('hah')
+    }
+  },
+  computed: {
+    together() {
+      const today = new Date();
+      const homeDate = new Date(this.introduce.together);
+      const together =
+        (today.getTime() - homeDate.getTime()) / 1000 / 60 / 60 / 24;
+      return Math.floor(together);
+    },
+    birth() {
+      const today = new Date();
+      const homeDate = new Date(this.introduce.birth);
+      const together =
+        (today.getTime() - homeDate.getTime()) / 1000 / 60 / 60 / 24 / 30;
+      return Math.floor(together);
     }
   }
 };

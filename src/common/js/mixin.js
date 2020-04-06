@@ -15,14 +15,15 @@ export const pickerMixin = {
         selectHandle(selectedText) {
             this.$createDialog({
                 type: 'warn',
-                content: `宠物性别已设置成 ${selectedText.join(' ')}`,
+                content: selectedText.join(' '),
                 icon: 'cubeic-alert'
             }).show()
+            // console.log(selectedText);
         },
         cancelHandle() {
             this.$createToast({
                 type: 'correct',
-                txt: '取消选择',
+                txt: '取消选择la',
                 time: 1000
             }).show()
         }
@@ -40,13 +41,14 @@ export const propmtMixin = {
                     value: '',
                     placeholder: '请输入'
                 },
-                // onConfirm: (e, promptValue) => {
-                //     this.$createToast({
-                //         type: 'warn',
-                //         time: 1000,
-                //         txt: `Prompt value: ${promptValue || ''}`
-                //     }).show()
-                // }
+                onConfirm: (e,promptValue) => {
+                    // this.$createToast({
+                    //     type: 'warn',
+                    //     time: 1000,
+                    //     txt: `Prompt value: ${promptValue || ''}`
+                    // }).show()
+                    console.log(promptValue);
+                }
             }).show()
         }
     }
