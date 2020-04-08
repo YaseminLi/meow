@@ -2,7 +2,7 @@
   <div class="record scroll-list-wrap">
     <!-- 滚动列表 -->
     <cube-scroll>
-      <Introduce @editIntroduce="editIntroduce" :introduce="introduce"/>
+      <Introduce @editIntroduce="editIntroduce"/>
       <div class="remindContainer">
         <Remind @editEvent="editEvent" />
         <Remind />
@@ -10,21 +10,15 @@
         <Remind />
       </div>
     </cube-scroll>
-    <router-view :introduce="introduce"></router-view>
+    <router-view ></router-view>
   </div>
 </template>
 
 <script>
 import Introduce from "components/Introduce";
 import Remind from "components/Remind";
-import { introduce } from "common/data/introduce.js";
 
 export default {
-  data() {
-    return {
-      introduce: introduce
-    };
-  },
   components: {
     Introduce,
     Remind

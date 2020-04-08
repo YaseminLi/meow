@@ -6,9 +6,8 @@
       <div class="message-container">
         <div class="message">
           <div class="nameMale">
-            <!-- <span class="name">{{introduce.name}}</span> -->
-            <span class="name" >{{sharedState.introduce.name}}</span>
-            <i :class="'iconfont '+introduce.gender" @click="changeName"></i>
+            <span class="name" >{{introduce.name}}</span>
+            <i :class="'iconfont '+introduce.gender"></i>
           </div>
           <div class="kind">{{introduce.kind}}</div>
         </div>
@@ -19,15 +18,15 @@
     </div>
     <div class="bottom">
       <div class="weight item">
-        <span>{{introduce.weight}}</span>
+        <span>{{introduce.weight}}kg</span>
         <span>体重</span>
       </div>
       <div class="together item">
-        <span>{{together}}天</span>
+        <span>{{togetherDays}}天</span>
         <span>一起生活</span>
       </div>
       <div class="birth item">
-        <span>{{birth}}个月</span>
+        <span>{{birthDays}}个月</span>
         <span>诞生</span>
       </div>
     </div>
@@ -35,37 +34,29 @@
 </template>
 <script>
 import { store } from "../store.js";
-console.log(store);
-
 export default {
-  props: {
-    introduce: Object
-  },
   data() {
     return {
-      sharedState: store.state
+      introduce: store.state.introduce
     };
   },
   methods: {
     editIntroduce() {
       // 向父组件传递点击事件
       this.$emit("editIntroduce");
-    },
-    changeName(){
-      store.setMessageAction('hah')
     }
   },
   computed: {
-    together() {
+    togetherDays() {
       const today = new Date();
-      const homeDate = new Date(this.introduce.together);
+      const homeDate = this.introduce.togetherDate;
       const together =
         (today.getTime() - homeDate.getTime()) / 1000 / 60 / 60 / 24;
       return Math.floor(together);
     },
-    birth() {
+    birthDays() {
       const today = new Date();
-      const homeDate = new Date(this.introduce.birth);
+      const homeDate = this.introduce.birthDate;
       const together =
         (today.getTime() - homeDate.getTime()) / 1000 / 60 / 60 / 24 / 30;
       return Math.floor(together);

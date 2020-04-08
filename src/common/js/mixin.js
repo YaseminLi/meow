@@ -1,31 +1,17 @@
+import { store } from "../../store";
 // 弹出单列选择框
 export const pickerMixin = {
     methods: {
-        showPicker(data, title) {
-            if (!this.picker) {
-                this.picker = this.$createPicker({
-                    title: title,
-                    data: [data],
-                    onSelect: this.selectHandle,
-                    onCancel: this.cancelHandle
-                })
-            }
+        showPicker(obj, key, data, title) {
+            this.picker = this.$createPicker({
+                title: title,
+                data: [data],
+                onSelect: (selectedText) => {
+                    store.setAction(obj, key, selectedText[0])
+                },
+                onCancel: this.cancelHandle
+            })
             this.picker.show()
-        },
-        selectHandle(selectedText) {
-            this.$createDialog({
-                type: 'warn',
-                content: selectedText.join(' '),
-                icon: 'cubeic-alert'
-            }).show()
-            // console.log(selectedText);
-        },
-        cancelHandle() {
-            this.$createToast({
-                type: 'correct',
-                txt: '取消选择la',
-                time: 1000
-            }).show()
         }
     }
 }
@@ -33,7 +19,7 @@ export const pickerMixin = {
 // 弹出输入框
 export const propmtMixin = {
     methods: {
-        showPrompt(title) {
+        showPrompt(obj, key, title) {
             this.dialog = this.$createDialog({
                 type: 'prompt',
                 title: title,
@@ -41,15 +27,16 @@ export const propmtMixin = {
                     value: '',
                     placeholder: '请输入'
                 },
-                onConfirm: (e,promptValue) => {
-                    // this.$createToast({
-                    //     type: 'warn',
-                    //     time: 1000,
-                    //     txt: `Prompt value: ${promptValue || ''}`
-                    // }).show()
-                    console.log(promptValue);
+                onConfirm: (e, promptValue) => {
+                    store.setAction(obj, key, promptValue)
+                    // 移除现在的实例组件，不然再次调用时propmt中会显示上次选中的value值
+                    this.dialog.remove()
+                },
+                onCancel: () => {
+                    this.dialog.remove()
                 }
             }).show()
+
         }
     }
 }
@@ -57,34 +44,22 @@ export const propmtMixin = {
 // 日期选择
 export const datePickerMixin = {
     methods: {
-        showDatePicker(title) {
-            if (!this.datePicker) {
-                this.datePicker = this.$createDatePicker({
-                    title: title,
-                    min: new Date(2000,1,1),
-                    max: new Date(2025, 9, 20),
-                    value: new Date(),
-                    onSelect: this.selectHandle,
-                    onCancel: this.cancelHandle
-                })
-            }
+        showDatePicker(obj,key,title,min,max) {
+            this.datePicker = this.$createDatePicker({
+                title: title,
+                min: min,
+                max: max,
+                value: new Date(),
+                onSelect: date => {
+                    store.setAction(obj, key, date)
+                },
+                onCancel: () => {
+                    this.datePicker.remove()
+                }
+            })
 
             this.datePicker.show()
-        },
-        selectHandle(date) {
-            this.$createDialog({
-                type: 'warn',
-                content: `Selected Item: <br/> - date: ${date} <br/> - <br/> `,
-                icon: 'cubeic-alert'
-            }).show()
-        },
-        // cancelHandle() {
-        //     this.$createToast({
-        //         type: 'correct',
-        //         txt: 'Picker canceled',
-        //         time: 1000
-        //     }).show()
-        // }
+        }
     }
 }
 
